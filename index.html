@@ -1,1 +1,301 @@
 
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050b18">
+  <meta name="description" content="LIXERA JOKI GAME - Jasa Joki Mobile Legends">
+  <title>LIXERA JOKI GAME</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- INTRO / PEMBUKA -->
+  <section id="intro" class="intro">
+    <div class="intro-content">
+      <div class="intro-logo">LX</div>
+      <p class="eyebrow">WELCOME TO</p>
+      <h1>LIXERA <span>JOKI GAME</span></h1>
+      <p>Push Rank • Joki Gendong • Mobile Legends</p>
+      <button id="btnMasuk" type="button">MASUK WEBSITE</button>
+    </div>
+  </section>
+
+  <!-- APLIKASI UTAMA -->
+  <main id="app" hidden>
+
+    <!-- HOME -->
+    <section id="halaman-home" class="page active">
+      <header class="site-header">
+        <div class="brand-mark">LX</div>
+        <div>
+          <h2>LIXERA JOKI GAME</h2>
+          <p>LEVEL UP YOUR GAME</p>
+        </div>
+      </header>
+
+      <!-- SLIDER 3 BANNER -->
+      <section class="banner-slider" aria-label="Banner promosi">
+        <div class="banner-track" id="bannerTrack">
+          <img src="bannerhalaman1.png" alt="Banner promosi Lixera 1">
+          <img src="bannerhalaman2.png" alt="Banner promosi Lixera 2">
+          <img src="bannerhalaman3.png" alt="Banner promosi Lixera 3">
+        </div>
+
+        <div class="slider-dots" id="sliderDots">
+          <button type="button" data-slide="0" aria-label="Banner 1"></button>
+          <button type="button" data-slide="1" aria-label="Banner 2"></button>
+          <button type="button" data-slide="2" aria-label="Banner 3"></button>
+        </div>
+      </section>
+
+      <section class="home-welcome">
+        <p class="eyebrow">YOUR RANK, OUR MISSION</p>
+        <h1>Push Rank Jadi <span>Lebih Mudah</span></h1>
+        <p>Pilih layanan joki yang sesuai dengan kebutuhanmu.</p>
+      </section>
+
+      <section class="service-cards">
+        <button class="service-card" type="button"
+          data-open="rank">
+          <span class="service-icon">🏆</span>
+          <span class="service-title">JOKI RANK</span>
+          <span>Naik rank sesuai targetmu</span>
+          <span class="service-action">LIHAT LAYANAN →</span>
+        </button>
+
+        <button class="service-card" type="button"
+          data-open="gendong">
+          <span class="service-icon">🎮</span>
+          <span class="service-title">JOKI GENDONG</span>
+          <span>Mabar bersama joki</span>
+          <span class="service-action">LIHAT LAYANAN →</span>
+        </button>
+      </section>
+
+      <section class="home-info">
+        <h3>KENAPA LIXERA?</h3>
+        <p>Proses pemesanan praktis, rincian harga jelas,
+          dan konfirmasi pesanan langsung ke admin.</p>
+      </section>
+    </section>
+
+    <!-- HALAMAN JOKI RANK -->
+    <section id="halaman-rank" class="page" hidden>
+      <button class="back-button" type="button" data-open="home">
+        ← Kembali
+      </button>
+
+      <img class="page-banner" src="bannerjokirank.png"
+        alt="Banner Joki Rank">
+
+      <div class="page-heading">
+        <p class="eyebrow">RANK SERVICE</p>
+        <h1>JOKI <span>RANK</span></h1>
+        <p>Pilih rank awal dan tujuan untuk menghitung biaya joki.</p>
+      </div>
+
+      <form id="formRank" class="order-form">
+        <label for="rankAwal">Rank awal</label>
+        <select id="rankAwal" name="rankAwal" required>
+          <option value="">Pilih rank awal</option>
+          <option value="grandmaster">Grandmaster</option>
+          <option value="epic">Epic</option>
+          <option value="legend">Legend</option>
+          <option value="mythic">Mythic</option>
+          <option value="honor">Honor</option>
+          <option value="glory">Glory</option>
+          <option value="immortal">Immortal</option>
+        </select>
+
+        <label for="bintangAwal">Bintang / angka awal</label>
+        <input id="bintangAwal" name="bintangAwal"
+          type="number" min="0" max="10000" required
+          placeholder="Contoh: 4 atau 18">
+
+        <label for="rankTujuan">Rank tujuan</label>
+        <select id="rankTujuan" name="rankTujuan" required>
+          <option value="">Pilih rank tujuan</option>
+          <option value="grandmaster">Grandmaster</option>
+          <option value="epic">Epic</option>
+          <option value="legend">Legend</option>
+          <option value="mythic">Mythic</option>
+          <option value="honor">Honor</option>
+          <option value="glory">Glory</option>
+          <option value="immortal">Immortal</option>
+        </select>
+
+        <label for="bintangTujuan">Bintang / angka tujuan</label>
+        <input id="bintangTujuan" name="bintangTujuan"
+          type="number" min="0" max="10000" required
+          placeholder="Contoh: 25 atau 55">
+
+        <div id="hasilRank" class="price-result" hidden>
+          <p>Estimasi total harga</p>
+          <strong id="hargaRank">Rp0</strong>
+          <p id="detailRank"></p>
+        </div>
+
+        <h3>Data Pemesan</h3>
+
+        <label for="namaRank">Nama pemesan</label>
+        <input id="namaRank" name="nama" required
+          maxlength="80" placeholder="Masukkan nama">
+
+        <label for="waRank">Nomor WhatsApp</label>
+        <input id="waRank" name="whatsapp" type="tel"
+          required maxlength="20" placeholder="08xxxxxxxxxx">
+
+        <label for="requestRank">Request / catatan</label>
+        <textarea id="requestRank" name="request"
+          rows="3" maxlength="500"
+          placeholder="Tulis request jika ada"></textarea>
+
+        <button type="submit" class="primary-button">
+          LANJUT KE PEMBAYARAN
+        </button>
+      </form>
+    </section>
+
+    <!-- HALAMAN JOKI GENDONG -->
+    <section id="halaman-gendong" class="page" hidden>
+      <button class="back-button" type="button" data-open="home">
+        ← Kembali
+      </button>
+
+      <img class="page-banner" src="bannerjokigendong.png"
+        alt="Banner Joki Gendong">
+
+      <div class="page-heading">
+        <p class="eyebrow">PARTY WITH OUR JOCKEY</p>
+        <h1>JOKI <span>GENDONG</span></h1>
+        <p>Isi detail akun dan catatan pesananmu.</p>
+      </div>
+
+      <form id="formGendong" class="order-form">
+        <label for="nickML">Nickname Mobile Legends</label>
+        <input id="nickML" name="nickname" required
+          maxlength="60" placeholder="Nickname akun ML">
+
+        <label for="idML">ID akun ML</label>
+        <input id="idML" name="idML" required
+          maxlength="40" placeholder="ID akun">
+
+        <label for="serverML">Server / Zone ID</label>
+        <input id="serverML" name="serverML"
+          maxlength="20" placeholder="Jika diperlukan">
+
+        <label for="paketGendong">Paket Joki Gendong</label>
+        <select id="paketGendong" name="paket" required>
+          <option value="">Pilih paket</option>
+        </select>
+
+        <label for="namaGendong">Nama pemesan</label>
+        <input id="namaGendong" name="nama" required
+          maxlength="80" placeholder="Masukkan nama">
+
+        <label for="waGendong">Nomor WhatsApp</label>
+        <input id="waGendong" name="whatsapp" type="tel"
+          required maxlength="20" placeholder="08xxxxxxxxxx">
+
+        <label for="catatanGendong">Catatan / request</label>
+        <textarea id="catatanGendong" name="catatan"
+          rows="3" maxlength="500"
+          placeholder="Catatan tambahan jika ada"></textarea>
+
+        <button type="submit" class="primary-button">
+          LANJUT KE PEMBAYARAN
+        </button>
+      </form>
+    </section>
+
+    <!-- HALAMAN PEMESANAN -->
+    <section id="halaman-pemesanan" class="page" hidden>
+      <div class="page-heading">
+        <p class="eyebrow">ORDER CENTER</p>
+        <h1>PEMESANAN <span>SAYA</span></h1>
+        <p>Ringkasan pesanan yang sedang kamu proses akan ditampilkan di sini.</p>
+      </div>
+
+      <div id="daftarPesanan" class="order-summary">
+        <p>Belum ada pesanan pada sesi ini.</p>
+      </div>
+    </section>
+
+    <!-- POP-UP PEMBAYARAN -->
+    <div id="modalPembayaran" class="modal" hidden>
+      <div class="modal-card" role="dialog"
+        aria-modal="true" aria-labelledby="judulPembayaran">
+
+        <button id="tutupPembayaran" class="modal-close"
+          type="button" aria-label="Tutup">×</button>
+
+        <p class="eyebrow">CHECKOUT</p>
+        <h2 id="judulPembayaran">PEMBAYARAN</h2>
+
+        <div id="ringkasanPembayaran"></div>
+
+        <div class="payment-total">
+          <span>Total pembayaran</span>
+          <strong id="totalPembayaran">Rp0</strong>
+        </div>
+
+        <img id="gambarQRIS" src="qrislixera.png"
+          alt="QR pembayaran Lixera">
+
+        <p class="payment-note">
+          Silakan scan QR dan bayar sesuai total pesanan.
+          Setelah itu, konfirmasi ke admin.
+        </p>
+
+        <p id="statusKonfirmasi" class="status-note">
+          Tombol konfirmasi tersedia setelah 15 detik.
+        </p>
+
+        <button id="btnKonfirmasiWA" type="button"
+          class="primary-button" disabled>
+          MENUNGGU 15 DETIK...
+        </button>
+
+        <p class="small-note">
+          Pembayaran diperiksa manual oleh admin.
+          Menunggu 15 detik tidak membuktikan pembayaran berhasil.
+        </p>
+      </div>
+    </div>
+
+    <!-- NAVIGASI BAWAH -->
+    <nav class="bottom-nav" aria-label="Navigasi utama">
+      <button type="button" data-open="home">
+        <span>⌂</span>
+        <small>Home</small>
+      </button>
+
+      <button type="button" data-open="rank">
+        <span>♛</span>
+        <small>Joki Rank</small>
+      </button>
+
+      <button type="button" data-open="home"
+        class="nav-logo" aria-label="Beranda Lixera">
+        LX
+      </button>
+
+      <button type="button" data-open="gendong">
+        <span>⚔</span>
+        <small>Gendong</small>
+      </button>
+
+      <button type="button" data-open="pemesanan">
+        <span>▤</span>
+        <small>Pemesanan</small>
+      </button>
+    </nav>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+                                         </html>
+          
