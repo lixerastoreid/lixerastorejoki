@@ -4,78 +4,52 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#050b19">
-  <title>LIXERA STORE | Joki Mobile Legends</title>
+  <title>LIXERA STORE — Joki Mobile Legends</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="intro" id="intro">
-    <img src="ace6cc86b93ae699dd33c2f2460b65a9.jpg" alt="LIXERA STORE">
-    <h1>LIXERA <span>STORE</span></h1>
-    <p>JOKI MOBILE LEGENDS • FAST • AMAN</p>
-    <button onclick="masukWebsite()">MASUK WEBSITE</button>
-  </div>
-
   <header class="topbar">
-    <img src="ace6cc86b93ae699dd33c2f2460b65a9.jpg" alt="Logo LIXERA">
+    <img src="ace6cc86b93ae699dd33c2f2460b65a9.jpg" alt="Logo LIXERA" class="logo">
     <div>
-      <strong>LIXERA STORE</strong>
-      <small>JOKI MOBILE LEGENDS</small>
+      <div class="brand">LIXERA STORE</div>
+      <div class="subtitle">JOKI MOBILE LEGENDS</div>
     </div>
   </header>
 
   <main>
+    <!-- HOME -->
     <section id="home" class="page active">
-      <div class="hero">
-        <div class="slider" id="slider">
+      <div class="slider">
+        <div class="slides">
           <img src="bannerhalaman1.png" alt="Banner LIXERA 1">
           <img src="bannerhalaman2.png" alt="Banner LIXERA 2">
           <img src="bannerhalaman3.png" alt="Banner LIXERA 3">
         </div>
-        <div class="dots">
-          <button onclick="slideKe(0)" aria-label="Banner 1"></button>
-          <button onclick="slideKe(1)" aria-label="Banner 2"></button>
-          <button onclick="slideKe(2)" aria-label="Banner 3"></button>
+        <div class="slider-dots">
+          <button class="dot active" data-slide="0" aria-label="Banner 1"></button>
+          <button class="dot" data-slide="1" aria-label="Banner 2"></button>
+          <button class="dot" data-slide="2" aria-label="Banner 3"></button>
         </div>
       </div>
 
       <div class="welcome panel">
-        <p class="eyebrow">WELCOME TO</p>
-        <h1>LIXERA <span>STORE</span></h1>
-        <p>Jasa joki Mobile Legends dengan pilihan layanan sesuai kebutuhanmu.</p>
-      </div>
-
-      <div class="service-grid">
-        <button class="service-card" onclick="bukaHalaman('rank')">
-          <img src="bannerjokirank.png" alt="Joki Rank">
-          <strong>JOKI RANK</strong>
-          <span>Hitung rank dan harga</span>
-        </button>
-        <button class="service-card" onclick="bukaHalaman('gendong')">
-          <img src="bannerjokigendong.png" alt="Joki Gendong">
-          <strong>JOKI GENDONG</strong>
-          <span>Pilih layanan gendong</span>
-        </button>
-      </div>
-
-      <div class="panel">
-        <h2>Kenapa LIXERA?</h2>
-        <div class="feature">⚡ Pilih layanan sesuai kebutuhan</div>
-        <div class="feature">🧮 Estimasi harga sebelum order</div>
-        <div class="feature">📲 Konfirmasi pesanan melalui WhatsApp</div>
+        <span class="eyebrow">WELCOME TO</span>
+        <h1>LIXERA STORE</h1>
+        <p>Joki Mobile Legends cepat, mudah, dan praktis.</p>
+        <button class="primary" data-page="rank">MULAI PESAN</button>
       </div>
     </section>
 
+    <!-- JOKI RANK -->
     <section id="rank" class="page">
-      <div class="section-banner">
-        <img src="bannerjokirank.png" alt="Banner Joki Rank">
-      </div>
+      <img class="service-banner" src="bannerjokirank.png" alt="Banner Joki Rank">
 
       <div class="panel">
-        <p class="eyebrow">HITUNG DULU</p>
-        <h1>Kalkulator Rank</h1>
+        <span class="eyebrow">HITUNG DULU</span>
+        <h2>Kalkulator Rank</h2>
 
-        <label for="rankAwal">Rank awal</label>
-        <select id="rankAwal">
+        <label for="rankStart">Rank awal</label>
+        <select id="rankStart" class="field">
           <option value="gm">Grandmaster</option>
           <option value="epic">Epic</option>
           <option value="legend">Legend</option>
@@ -85,158 +59,198 @@
           <option value="immortal">Immortal</option>
         </select>
 
-        <label for="bintangAwal">Bintang / rating awal</label>
-        <input id="bintangAwal" type="number" min="0" value="0" inputmode="numeric">
-
-        <label for="rankTujuan">Rank tujuan</label>
-        <select id="rankTujuan">
-          <option value="gm">Grandmaster</option>
-          <option value="epic">Epic</option>
-          <option value="legend">Legend</option>
-          <option value="mythic">Mythic</option>
-          <option value="honor">Honor</option>
-          <option value="glory">Glory</option>
-          <option value="immortal">Immortal</option>
-        </select>
-
-        <label for="bintangTujuan">Bintang / rating tujuan</label>
-        <input id="bintangTujuan" type="number" min="0" value="5" inputmode="numeric">
-
-        <p class="hint">
-          Grandmaster, Epic, dan Legend: 0–24 bintang.
-          Mythic: 0–24 rating. Honor: 25–49.
-          Glory: 50–99. Immortal mulai 100.
-        </p>
-
-        <div class="price-result">
-          <span>Estimasi harga joki rank</span>
-          <strong id="hargaRank">Rp0</strong>
-          <p id="detailRank">Pilih rank awal dan tujuan.</p>
+        <div id="startDivisionWrap">
+          <label for="startDivision">Divisi awal</label>
+          <select id="startDivision" class="field">
+            <option value="5">V</option>
+            <option value="4">IV</option>
+            <option value="3">III</option>
+            <option value="2">II</option>
+            <option value="1">I</option>
+          </select>
         </div>
 
-        <button class="primary-btn" onclick="gunakanRank()">PESAN JOKI RANK</button>
+        <label for="startStars">Bintang awal 🌟</label>
+        <input id="startStars" class="field" type="number" min="0" max="4" value="0" inputmode="numeric">
+
+        <label for="rankEnd">Rank tujuan</label>
+        <select id="rankEnd" class="field">
+          <option value="gm">Grandmaster</option>
+          <option value="epic">Epic</option>
+          <option value="legend" selected>Legend</option>
+          <option value="mythic">Mythic</option>
+          <option value="honor">Honor</option>
+          <option value="glory">Glory</option>
+          <option value="immortal">Immortal</option>
+        </select>
+
+        <div id="endDivisionWrap">
+          <label for="endDivision">Divisi tujuan</label>
+          <select id="endDivision" class="field">
+            <option value="5">V</option>
+            <option value="4">IV</option>
+            <option value="3">III</option>
+            <option value="2">II</option>
+            <option value="1" selected>I</option>
+          </select>
+        </div>
+
+        <label for="endStars">Bintang tujuan 🌟</label>
+        <input id="endStars" class="field" type="number" min="0" max="4" value="0" inputmode="numeric">
+
+        <div class="total-box">
+          <span>Estimasi harga joki rank</span>
+          <strong id="rankPrice">Rp0</strong>
+          <small id="rankSummary">Pilih rank untuk menghitung harga.</small>
+        </div>
+
+        <label for="rankName">Nama</label>
+        <input id="rankName" class="field" placeholder="Nama pemesan">
+
+        <label for="rankPhone">No. WhatsApp</label>
+        <input id="rankPhone" class="field" type="tel" placeholder="Nomor WhatsApp">
+
+        <label for="rankRequest">Request</label>
+        <textarea id="rankRequest" class="field" rows="2" placeholder="Request tambahan (opsional)"></textarea>
+
+        <button id="rankOrder" class="primary full">PESAN JOKI RANK</button>
       </div>
     </section>
 
+    <!-- JOKI GENDONG -->
     <section id="gendong" class="page">
-      <div class="section-banner">
-        <img src="bannerjokigendong.png" alt="Banner Joki Gendong">
-      </div>
+      <img class="service-banner" src="bannerjokigendong.png" alt="Banner Joki Gendong">
 
       <div class="panel">
-        <p class="eyebrow">MAIN BARENG</p>
-        <h1>Joki Gendong</h1>
-        <p>Pilih rank yang ingin digunakan untuk menghitung estimasi harga.</p>
+        <span class="eyebrow">HITUNG DULU</span>
+        <h2>Kalkulator Gendong</h2>
 
-        <label for="rankGendong">Pilih rank</label>
-        <select id="rankGendong">
-          <option value="gm">Grandmaster — Rp3.000/bintang</option>
-          <option value="epic">Epic — Rp5.000/bintang</option>
-          <option value="legend">Legend — Rp7.000/bintang</option>
-          <option value="mythic">Mythic — Rp15.000/bintang</option>
-          <option value="honor">Honor — Rp22.000/bintang</option>
-          <option value="glory">Glory — Rp28.000/bintang</option>
-          <option value="immortal">Immortal — Rp32.000/bintang</option>
-          <option value="grading">Mythic Grading — Rp200.000</option>
+        <label for="carryStart">Rank awal</label>
+        <select id="carryStart" class="field">
+          <option value="gm">Grandmaster</option>
+          <option value="epic">Epic</option>
+          <option value="legend">Legend</option>
+          <option value="mythic">Mythic</option>
+          <option value="honor">Honor</option>
+          <option value="glory">Glory</option>
+          <option value="immortal">Immortal</option>
         </select>
 
-        <label for="jumlahGendong">Jumlah bintang / rating</label>
-        <input id="jumlahGendong" type="number" min="1" value="1" inputmode="numeric">
+        <div id="carryStartDivisionWrap">
+          <label for="carryStartDivision">Divisi awal</label>
+          <select id="carryStartDivision" class="field">
+            <option value="5">V</option>
+            <option value="4">IV</option>
+            <option value="3">III</option>
+            <option value="2">II</option>
+            <option value="1">I</option>
+          </select>
+        </div>
 
-        <div class="price-result">
+        <label for="carryStartStars">Bintang awal 🌟</label>
+        <input id="carryStartStars" class="field" type="number" min="0" max="4" value="0" inputmode="numeric">
+
+        <label for="carryEnd">Rank tujuan</label>
+        <select id="carryEnd" class="field">
+          <option value="gm">Grandmaster</option>
+          <option value="epic">Epic</option>
+          <option value="legend" selected>Legend</option>
+          <option value="mythic">Mythic</option>
+          <option value="honor">Honor</option>
+          <option value="glory">Glory</option>
+          <option value="immortal">Immortal</option>
+        </select>
+
+        <div id="carryEndDivisionWrap">
+          <label for="carryEndDivision">Divisi tujuan</label>
+          <select id="carryEndDivision" class="field">
+            <option value="5">V</option>
+            <option value="4">IV</option>
+            <option value="3">III</option>
+            <option value="2">II</option>
+            <option value="1" selected>I</option>
+          </select>
+        </div>
+
+        <label for="carryEndStars">Bintang tujuan 🌟</label>
+        <input id="carryEndStars" class="field" type="number" min="0" max="4" value="0" inputmode="numeric">
+
+        <div class="total-box">
           <span>Estimasi harga joki gendong</span>
-          <strong id="hargaGendong">Rp3.000</strong>
-          <p id="detailGendong">1 bintang</p>
+          <strong id="carryPrice">Rp0</strong>
+          <small id="carrySummary">Pilih rank untuk menghitung harga.</small>
         </div>
 
-        <button class="primary-btn" onclick="gunakanGendong()">PESAN JOKI GENDONG</button>
+        <label for="carryName">Nama</label>
+        <input id="carryName" class="field" placeholder="Nama pemesan">
+
+        <label for="carryPhone">No. WhatsApp</label>
+        <input id="carryPhone" class="field" type="tel" placeholder="Nomor WhatsApp">
+
+        <label for="carryNick">Nick Mobile Legends</label>
+        <input id="carryNick" class="field" placeholder="Nickname ML">
+
+        <label for="carryId">ID Mobile Legends</label>
+        <input id="carryId" class="field" placeholder="ID akun">
+
+        <label for="carryRequest">Catatan</label>
+        <textarea id="carryRequest" class="field" rows="2" placeholder="Catatan tambahan (opsional)"></textarea>
+
+        <button id="carryOrder" class="primary full">PESAN JOKI GENDONG</button>
       </div>
-                                          </section>
-                                              <section id="pemesanan" class="page">
+    </section>
+        <!-- PEMESANAN -->
+    <section id="pesanan" class="page">
       <div class="panel">
-        <p class="eyebrow">CHECKOUT</p>
-        <h1>Formulir Pemesanan</h1>
-
-        <label for="jenisOrder">Jenis pesanan</label>
-        <select id="jenisOrder">
-          <option value="Joki Rank">Joki Rank</option>
-          <option value="Joki Gendong">Joki Gendong</option>
-        </select>
-
-        <div id="formRank">
-          <label for="namaRank">Nama pemesan</label>
-          <input id="namaRank" placeholder="Nama kamu">
-
-          <label for="waRank">Nomor WhatsApp</label>
-          <input id="waRank" type="tel" placeholder="08xxxxxxxxxx">
-
-          <label for="requestRank">Request / catatan</label>
-          <textarea id="requestRank" placeholder="Tulis request joki kamu"></textarea>
+        <span class="eyebrow">ORDER</span>
+        <h2>Pemesanan</h2>
+        <div id="orderList" class="order-list">
+          <p class="empty">Belum ada pesanan. Pilih Joki Rank atau Joki Gendong untuk mulai.</p>
         </div>
-
-        <div id="formGendong" class="hidden">
-          <label for="nickML">Nickname ML</label>
-          <input id="nickML" placeholder="Nickname akun">
-
-          <label for="idML">ID dan server ML</label>
-          <input id="idML" placeholder="Contoh: 123456789 (1234)">
-
-          <label for="catatanGendong">Catatan</label>
-          <textarea id="catatanGendong" placeholder="Tulis catatan tambahan"></textarea>
-        </div>
-
-        <div class="order-summary">
-          <span>Pesanan</span>
-          <strong id="ringkasanJenis">Joki Rank</strong>
-          <span>Rank / layanan</span>
-          <strong id="ringkasanPaket">Belum dipilih</strong>
-          <span>Total harga</span>
-          <strong id="ringkasanHarga">Rp0</strong>
-        </div>
-
-        <button class="primary-btn" onclick="buatPesanan()">LANJUT PEMBAYARAN</button>
-        <p class="hint">Pastikan data dan harga pesanan sudah benar sebelum melanjutkan.</p>
+        <button class="primary full" data-page="rank">PESAN JOKI RANK</button>
+        <button class="secondary full" data-page="gendong">PESAN JOKI GENDONG</button>
       </div>
     </section>
   </main>
 
+  <!-- NAVIGASI BAWAH -->
   <nav class="bottom-nav">
-    <button data-page="home" class="nav-btn active" onclick="bukaHalaman('home')">
-      <span>⌂</span>HOME
+    <button class="nav-item active" data-page="home">
+      <span>⌂</span><small>HOME</small>
     </button>
-    <button data-page="rank" class="nav-btn" onclick="bukaHalaman('rank')">
-      <span>⚔</span>JOKI RANK
+    <button class="nav-item" data-page="rank">
+      <span>⚔</span><small>JOKI RANK</small>
     </button>
-    <button class="nav-logo" onclick="bukaHalaman('home')" aria-label="Home">
+    <button class="nav-logo" data-page="home" aria-label="Home">
       <img src="ace6cc86b93ae699dd33c2f2460b65a9.jpg" alt="LIXERA">
     </button>
-    <button data-page="gendong" class="nav-btn" onclick="bukaHalaman('gendong')">
-      <span>♛</span>GENDONG
+    <button class="nav-item" data-page="gendong">
+      <span>♛</span><small>GENDONG</small>
     </button>
-    <button data-page="pemesanan" class="nav-btn" onclick="bukaHalaman('pemesanan')">
-      <span>▤</span>PESANAN
+    <button class="nav-item" data-page="pesanan">
+      <span>▤</span><small>PESANAN</small>
     </button>
   </nav>
 
-  <div class="modal hidden" id="modalQR">
+  <!-- POPUP PEMBAYARAN -->
+  <div id="paymentModal" class="modal" aria-hidden="true">
     <div class="modal-card">
-      <button class="close-btn" onclick="tutupQR()">×</button>
-      <p class="eyebrow">PEMBAYARAN MANUAL</p>
+      <button id="closePayment" class="close-btn" aria-label="Tutup">×</button>
+      <span class="eyebrow">PEMBAYARAN</span>
       <h2>Scan QRIS</h2>
-      <div class="modal-summary">
-        <span>Pesanan</span><strong id="qrJenis">-</strong>
-        <span>Detail</span><strong id="qrDetail">-</strong>
-        <span>Total bayar</span><strong id="qrHarga" class="total">Rp0</strong>
+      <div class="payment-total">
+        <span>Total pembayaran</span>
+        <strong id="paymentPrice">Rp0</strong>
       </div>
-      <img class="qr-image" src="qrislixera.png" alt="QRIS LIXERA STORE">
-      <p class="hint">Bayar sesuai total yang tertera. Setelah membayar, tunggu 15 detik lalu konfirmasi ke admin WhatsApp.</p>
-      <p id="timerText" class="timer">Tombol konfirmasi tersedia dalam 15 detik.</p>
-      <button id="btnKonfirmasi" class="primary-btn" disabled onclick="konfirmasiWA()">KONFIRMASI VIA WHATSAPP</button>
+      <img id="paymentQR" class="payment-qr" src="qrislixera.png" alt="QRIS LIXERA STORE">
+      <p id="paymentDescription" class="payment-description">Selesaikan pembayaran sesuai total pesanan.</p>
+      <p id="paymentCountdown" class="countdown">Konfirmasi tersedia dalam 15 detik</p>
+      <button id="confirmPayment" class="primary full" disabled>MENUNGGU 15 DETIK</button>
+      <button id="cancelPayment" class="secondary full">BATAL</button>
     </div>
   </div>
 
   <div id="toast" class="toast"></div>
-
   <script src="script.js"></script>
 </body>
-  </html>
+</html>
