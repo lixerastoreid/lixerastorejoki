@@ -2,300 +2,472 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#050b18">
-  <meta name="description" content="LIXERA JOKI GAME - Jasa Joki Mobile Legends">
-  <title>LIXERA JOKI GAME</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050b18">
+<title>LIXERA STORE | Joki Mobile Legends</title>
+<style>
+:root{--bg:#050914;--panel:#0c1830;--blue:#168bff;--cyan:#00e5ff;--text:#f3f7ff;--muted:#9eb1d0;--line:#20395e}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(ellipse at top,#102956 0,#050914 55%);color:var(--text);font-family:Arial,Helvetica,sans-serif;min-height:100vh}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+button:disabled{opacity:.5;cursor:not-allowed}
+.hidden{display:none!important}
+.wrap{max-width:900px;margin:auto;padding:16px 14px 100px}
+.top{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.logo{width:46px;height:46px;object-fit:contain;border-radius:12px;background:#10284c}
+.brand{font-weight:900;letter-spacing:3px;font-size:19px}
+.sub{color:var(--muted);font-size:12px;margin-top:4px}
+.panel{background:linear-gradient(145deg,#0d1b34,#081121);border:1px solid var(--line);border-radius:18px;padding:17px;margin:14px 0;box-shadow:0 8px 30px #0005}
+h1,h2,h3,p{margin-top:0}
+h1{font-size:27px;line-height:1.15}
+h2{font-size:21px}
+h3{font-size:16px}
+.muted{color:var(--muted);font-size:13px;line-height:1.6}
+.btn{border:0;border-radius:12px;padding:13px 16px;font-weight:800;color:white;background:linear-gradient(100deg,#0865ed,#00a9ff);width:100%;box-shadow:0 5px 20px #007bff33}
+.btn.secondary{background:#142644;border:1px solid #31517d;box-shadow:none}
+.btn.danger{background:#572239}
+.btnrow{display:flex;gap:9px;flex-wrap:wrap}
+.btnrow>*{flex:1;min-width:120px}
+.bannerbox{position:relative;overflow:hidden;border-radius:16px;border:1px solid #244a80;background:#09162b}
+.bannerbox img{width:100%;height:auto;display:block;aspect-ratio:2.5/1;object-fit:cover}
+.dots{display:flex;justify-content:center;gap:7px;padding:10px}
+.dot{width:8px;height:8px;border-radius:50%;background:#536581;border:0;padding:0}
+.dot.active{background:var(--cyan);box-shadow:0 0 10px var(--cyan)}
+.navgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:15px}
+.navcard{background:#0d1b34;border:1px solid #24436b;border-radius:14px;padding:16px 10px;text-align:center;color:white;font-weight:800}
+.navcard span{display:block;font-size:12px;color:var(--muted);font-weight:400;margin-top:6px}
+.rankgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.rankcard{border:1px solid #24436b;border-radius:13px;padding:10px;text-align:center;background:#09152a}
+.rankcard img{height:74px;width:100%;object-fit:contain}
+.rankcard strong{display:block;font-size:14px;margin:5px 0}
+.rankcard small{color:var(--cyan)}
+label{display:block;font-size:13px;font-weight:700;margin:13px 0 6px}
+input,select,textarea{width:100%;padding:12px;border-radius:10px;background:#050d1b;border:1px solid #294466;color:white;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--cyan)}
+textarea{min-height:75px;resize:vertical}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.total{font-size:25px;font-weight:900;color:var(--cyan);margin:8px 0}
+.note{border-left:3px solid var(--cyan);padding:10px;background:#09172a;color:#b8c9e5;font-size:12px;line-height:1.6;border-radius:5px}
+.rankrow{display:flex;gap:9px;align-items:center}
+.rankrow>*{flex:1;min-width:0}
+.bottom{position:fixed;bottom:0;left:0;right:0;z-index:10;background:#071020f5;border-top:1px solid #254064;padding:9px max(12px,env(safe-area-inset-right)) calc(9px + env(safe-area-inset-bottom));display:flex;justify-content:center;gap:7px}
+.bottom button{flex:1;max-width:180px;background:#10213b;color:#c8d8f0;border:1px solid #24436b;border-radius:10px;padding:10px 3px;font-size:11px;font-weight:800}
+.bottom button.active{background:#0755a9;color:white;border-color:#19a9ff}
+.modal{position:fixed;inset:0;z-index:30;background:#000c;display:flex;align-items:center;justify-content:center;padding:15px;overflow:auto}
+.modalbox{background:#0b1830;border:1px solid #31517c;border-radius:18px;padding:19px;width:100%;max-width:440px;max-height:92vh;overflow:auto}
+.qr{display:block;width:100%;max-width:290px;margin:14px auto;border-radius:12px;background:white}
+.center{text-align:center}
+footer{text-align:center;color:#7287a8;font-size:11px;margin:22px 0}
+@media(min-width:650px){.rankgrid{grid-template-columns:repeat(4,minmax(0,1fr))}.navgrid{grid-template-columns:repeat(4,minmax(0,1fr))}.wrap{padding-top:24px}.bannerbox img{aspect-ratio:2.7/1}}
+@media(max-width:390px){.formgrid{grid-template-columns:1fr}.brand{font-size:16px}h1{font-size:23px}}
+</style>
 </head>
 <body>
 
-  <!-- INTRO / PEMBUKA -->
-  <section id="intro" class="intro">
-    <div class="intro-content">
-      <div class="intro-logo">LX</div>
-      <p class="eyebrow">WELCOME TO</p>
-      <h1>LIXERA <span>JOKI GAME</span></h1>
-      <p>Push Rank • Joki Gendong • Mobile Legends</p>
-      <button id="btnMasuk" type="button">MASUK WEBSITE</button>
+<section id="intro" class="wrap">
+  <div class="panel center" style="margin-top:10vh;padding:28px 18px">
+    <div style="font-size:12px;letter-spacing:5px;color:#00e5ff;font-weight:900">WELCOME TO</div>
+    <h1 style="margin:15px 0">LIXERA <span style="color:#00baff">STORE</span></h1>
+    <p class="muted">JOKI RANK • JOKI GENDONG<br>Mobile Legends: Bang Bang</p>
+    <div class="bannerbox" style="margin:20px 0">
+      <img src="bannerhalaman1.png" alt="Banner LIXERA STORE">
     </div>
-  </section>
+    <button class="btn" onclick="enterSite()">MASUK WEBSITE</button>
+    <p class="muted" style="margin:14px 0 0">Gaming service • Fast order • WhatsApp admin</p>
+  </div>
+</section>
 
-  <!-- APLIKASI UTAMA -->
-  <main id="app" hidden>
+<div id="app" class="hidden">
+  <main class="wrap">
+    <header class="top">
+      <div style="width:46px;height:46px;border-radius:12px;background:#10284c;display:grid;place-items:center;color:#00e5ff;font-size:23px;font-weight:900">L</div>
+      <div><div class="brand">LIXERA STORE</div><div class="sub">JOKI MOBILE LEGENDS</div></div>
+    </header>
 
-    <!-- HOME -->
-    <section id="halaman-home" class="page active">
-      <header class="site-header">
-        <div class="brand-mark">LX</div>
-        <div>
-          <h2>LIXERA JOKI GAME</h2>
-          <p>LEVEL UP YOUR GAME</p>
-        </div>
-      </header>
-
-      <!-- SLIDER 3 BANNER -->
-      <section class="banner-slider" aria-label="Banner promosi">
-        <div class="banner-track" id="bannerTrack">
-          <img src="bannerhalaman1.png" alt="Banner promosi Lixera 1">
-          <img src="bannerhalaman2.png" alt="Banner promosi Lixera 2">
-          <img src="bannerhalaman3.png" alt="Banner promosi Lixera 3">
-        </div>
-
-        <div class="slider-dots" id="sliderDots">
-          <button type="button" data-slide="0" aria-label="Banner 1"></button>
-          <button type="button" data-slide="1" aria-label="Banner 2"></button>
-          <button type="button" data-slide="2" aria-label="Banner 3"></button>
-        </div>
-      </section>
-
-      <section class="home-welcome">
-        <p class="eyebrow">YOUR RANK, OUR MISSION</p>
-        <h1>Push Rank Jadi <span>Lebih Mudah</span></h1>
-        <p>Pilih layanan joki yang sesuai dengan kebutuhanmu.</p>
-      </section>
-
-      <section class="service-cards">
-        <button class="service-card" type="button"
-          data-open="rank">
-          <span class="service-icon">🏆</span>
-          <span class="service-title">JOKI RANK</span>
-          <span>Naik rank sesuai targetmu</span>
-          <span class="service-action">LIHAT LAYANAN →</span>
-        </button>
-
-        <button class="service-card" type="button"
-          data-open="gendong">
-          <span class="service-icon">🎮</span>
-          <span class="service-title">JOKI GENDONG</span>
-          <span>Mabar bersama joki</span>
-          <span class="service-action">LIHAT LAYANAN →</span>
-        </button>
-      </section>
-
-      <section class="home-info">
-        <h3>KENAPA LIXERA?</h3>
-        <p>Proses pemesanan praktis, rincian harga jelas,
-          dan konfirmasi pesanan langsung ke admin.</p>
-      </section>
-    </section>
-
-    <!-- HALAMAN JOKI RANK -->
-    <section id="halaman-rank" class="page" hidden>
-      <button class="back-button" type="button" data-open="home">
-        ← Kembali
-      </button>
-
-      <img class="page-banner" src="bannerjokirank.png"
-        alt="Banner Joki Rank">
-
-      <div class="page-heading">
-        <p class="eyebrow">RANK SERVICE</p>
-        <h1>JOKI <span>RANK</span></h1>
-        <p>Pilih rank awal dan tujuan untuk menghitung biaya joki.</p>
+    <section id="page-home" class="page">
+      <div class="bannerbox">
+        <img id="homeBanner" src="bannerhalaman1.png" alt="Banner halaman utama">
       </div>
-
-      <form id="formRank" class="order-form">
-        <label for="rankAwal">Rank awal</label>
-        <select id="rankAwal" name="rankAwal" required>
-          <option value="">Pilih rank awal</option>
-          <option value="grandmaster">Grandmaster</option>
-          <option value="epic">Epic</option>
-          <option value="legend">Legend</option>
-          <option value="mythic">Mythic</option>
-          <option value="honor">Honor</option>
-          <option value="glory">Glory</option>
-          <option value="immortal">Immortal</option>
-        </select>
-
-        <label for="bintangAwal">Bintang / angka awal</label>
-        <input id="bintangAwal" name="bintangAwal"
-          type="number" min="0" max="10000" required
-          placeholder="Contoh: 4 atau 18">
-
-        <label for="rankTujuan">Rank tujuan</label>
-        <select id="rankTujuan" name="rankTujuan" required>
-          <option value="">Pilih rank tujuan</option>
-          <option value="grandmaster">Grandmaster</option>
-          <option value="epic">Epic</option>
-          <option value="legend">Legend</option>
-          <option value="mythic">Mythic</option>
-          <option value="honor">Honor</option>
-          <option value="glory">Glory</option>
-          <option value="immortal">Immortal</option>
-        </select>
-
-        <label for="bintangTujuan">Bintang / angka tujuan</label>
-        <input id="bintangTujuan" name="bintangTujuan"
-          type="number" min="0" max="10000" required
-          placeholder="Contoh: 25 atau 55">
-
-        <div id="hasilRank" class="price-result" hidden>
-          <p>Estimasi total harga</p>
-          <strong id="hargaRank">Rp0</strong>
-          <p id="detailRank"></p>
+      <div class="dots">
+        <button class="dot active" onclick="showBanner(0)" aria-label="Banner 1"></button>
+        <button class="dot" onclick="showBanner(1)" aria-label="Banner 2"></button>
+        <button class="dot" onclick="showBanner(2)" aria-label="Banner 3"></button>
+      </div>
+      <div class="panel">
+        <h1>Push Rank, <span style="color:#00c8ff">Naik Kelas.</span></h1>
+        <p class="muted">Pilih layanan, isi data dengan benar, cek total harga, lalu lanjutkan pemesanan melalui WhatsApp.</p>
+        <div class="navgrid">
+          <button class="navcard" onclick="openPage('rank')">⚔️ JOKI RANK<span>Naik rank sesuai target</span></button>
+          <button class="navcard" onclick="openPage('gendong')">🏆 JOKI GENDONG<span>Main bareng joki</span></button>
+          <button class="navcard" onclick="openPage('order')">🧾 PEMESANAN<span>Lihat alur pesanan</span></button>
+          <button class="navcard" onclick="openPage('prices')">💎 PRICE LIST<span>Cek harga layanan</span></button>
         </div>
-
-        <h3>Data Pemesan</h3>
-
-        <label for="namaRank">Nama pemesan</label>
-        <input id="namaRank" name="nama" required
-          maxlength="80" placeholder="Masukkan nama">
-
-        <label for="waRank">Nomor WhatsApp</label>
-        <input id="waRank" name="whatsapp" type="tel"
-          required maxlength="20" placeholder="08xxxxxxxxxx">
-
-        <label for="requestRank">Request / catatan</label>
-        <textarea id="requestRank" name="request"
-          rows="3" maxlength="500"
-          placeholder="Tulis request jika ada"></textarea>
-
-        <button type="submit" class="primary-button">
-          LANJUT KE PEMBAYARAN
-        </button>
-      </form>
-    </section>
-
-    <!-- HALAMAN JOKI GENDONG -->
-    <section id="halaman-gendong" class="page" hidden>
-      <button class="back-button" type="button" data-open="home">
-        ← Kembali
-      </button>
-
-      <img class="page-banner" src="bannerjokigendong.png"
-        alt="Banner Joki Gendong">
-
-      <div class="page-heading">
-        <p class="eyebrow">PARTY WITH OUR JOCKEY</p>
-        <h1>JOKI <span>GENDONG</span></h1>
-        <p>Isi detail akun dan catatan pesananmu.</p>
       </div>
-
-      <form id="formGendong" class="order-form">
-        <label for="nickML">Nickname Mobile Legends</label>
-        <input id="nickML" name="nickname" required
-          maxlength="60" placeholder="Nickname akun ML">
-
-        <label for="idML">ID akun ML</label>
-        <input id="idML" name="idML" required
-          maxlength="40" placeholder="ID akun">
-
-        <label for="serverML">Server / Zone ID</label>
-        <input id="serverML" name="serverML"
-          maxlength="20" placeholder="Jika diperlukan">
-
-        <label for="paketGendong">Paket Joki Gendong</label>
-        <select id="paketGendong" name="paket" required>
-          <option value="">Pilih paket</option>
-        </select>
-
-        <label for="namaGendong">Nama pemesan</label>
-        <input id="namaGendong" name="nama" required
-          maxlength="80" placeholder="Masukkan nama">
-
-        <label for="waGendong">Nomor WhatsApp</label>
-        <input id="waGendong" name="whatsapp" type="tel"
-          required maxlength="20" placeholder="08xxxxxxxxxx">
-
-        <label for="catatanGendong">Catatan / request</label>
-        <textarea id="catatanGendong" name="catatan"
-          rows="3" maxlength="500"
-          placeholder="Catatan tambahan jika ada"></textarea>
-
-        <button type="submit" class="primary-button">
-          LANJUT KE PEMBAYARAN
-        </button>
-      </form>
-    </section>
-
-    <!-- HALAMAN PEMESANAN -->
-    <section id="halaman-pemesanan" class="page" hidden>
-      <div class="page-heading">
-        <p class="eyebrow">ORDER CENTER</p>
-        <h1>PEMESANAN <span>SAYA</span></h1>
-        <p>Ringkasan pesanan yang sedang kamu proses akan ditampilkan di sini.</p>
-      </div>
-
-      <div id="daftarPesanan" class="order-summary">
-        <p>Belum ada pesanan pada sesi ini.</p>
+      <div class="panel">
+        <h2>Kenapa LIXERA?</h2>
+        <p class="muted">✔ Tampilan mobile-friendly<br>✔ Rincian pesanan sebelum konfirmasi<br>✔ Konfirmasi pesanan melalui WhatsApp admin</p>
       </div>
     </section>
 
-    <!-- POP-UP PEMBAYARAN -->
-    <div id="modalPembayaran" class="modal" hidden>
-      <div class="modal-card" role="dialog"
-        aria-modal="true" aria-labelledby="judulPembayaran">
-
-        <button id="tutupPembayaran" class="modal-close"
-          type="button" aria-label="Tutup">×</button>
-
-        <p class="eyebrow">CHECKOUT</p>
-        <h2 id="judulPembayaran">PEMBAYARAN</h2>
-
-        <div id="ringkasanPembayaran"></div>
-
-        <div class="payment-total">
-          <span>Total pembayaran</span>
-          <strong id="totalPembayaran">Rp0</strong>
-        </div>
-
-        <img id="gambarQRIS" src="qrislixera.png"
-          alt="QR pembayaran Lixera">
-
-        <p class="payment-note">
-          Silakan scan QR dan bayar sesuai total pesanan.
-          Setelah itu, konfirmasi ke admin.
-        </p>
-
-        <p id="statusKonfirmasi" class="status-note">
-          Tombol konfirmasi tersedia setelah 15 detik.
-        </p>
-
-        <button id="btnKonfirmasiWA" type="button"
-          class="primary-button" disabled>
-          MENUNGGU 15 DETIK...
-        </button>
-
-        <p class="small-note">
-          Pembayaran diperiksa manual oleh admin.
-          Menunggu 15 detik tidak membuktikan pembayaran berhasil.
-        </p>
+    <section id="page-rank" class="page hidden">
+      <h1>Joki Rank</h1>
+      <p class="muted">Pilih rank awal, rank tujuan, dan bintang/rating. Harga dihitung dengan penjumlahan setiap kenaikan.</p>
+      <div class="bannerbox"><img src="bannerjokirank.png" alt="Banner Joki Rank"></div>
+      <div class="panel">
+        <h2>Kalkulator Rank</h2>
+        <label>Rank awal</label>
+        <select id="rankFrom" onchange="calculateRank()"></select>
+        <label>Bintang/rating awal</label>
+        <input id="starFrom" type="number" min="0" max="10000" value="0" oninput="calculateRank()">
+        <label>Rank tujuan</label>
+        <select id="rankTo" onchange="calculateRank()"></select>
+        <label>Bintang/rating tujuan</label>
+        <input id="starTo" type="number" min="0" max="10000" value="18" oninput="calculateRank()">
+        <div class="note" style="margin-top:14px">GM, Epic, dan Legend menggunakan 0–24 bintang per rank. Mythic 0–24, Honor 25–49, Glory 50–99, dan Immortal mulai 100. Periksa kembali pilihan rank dan angka sebelum memesan.</div>
+        <p style="margin:15px 0 4px">Estimasi harga joki rank</p>
+        <div class="total" id="rankTotal">Rp0</div>
+        <p id="rankBreakdown" class="muted">Pilih rank untuk menghitung.</p>
+        <button class="btn" onclick="startRankOrder()">PESAN JOKI RANK</button>
       </div>
-    </div>
+      <div class="panel">
+        <h2>Harga per bintang</h2>
+        <div id="rankPriceGrid" class="rankgrid"></div>
+      </div>
+    </section>
 
-    <!-- NAVIGASI BAWAH -->
-    <nav class="bottom-nav" aria-label="Navigasi utama">
-      <button type="button" data-open="home">
-        <span>⌂</span>
-        <small>Home</small>
-      </button>
+    <section id="page-gendong" class="page hidden">
+      <h1>Joki Gendong</h1>
+      <p class="muted">Pilih layanan sesuai kebutuhanmu, lalu isi data akun dan catatan.</p>
+      <div class="bannerbox"><img src="bannerjokigendong.png" alt="Banner Joki Gendong"></div>
+      <div class="panel">
+        <h2>Pilih layanan</h2>
+        <div id="gendongPriceGrid" class="rankgrid"></div>
+        <label>Paket joki gendong</label>
+        <select id="gendongPackage" onchange="updateGendongTotal()"></select>
+        <label>Jumlah pesanan</label>
+        <input id="gendongQty" type="number" min="1" max="10" value="1" oninput="updateGendongTotal()">
+        <p style="margin:14px 0 4px">Total harga</p>
+        <div class="total" id="gendongTotal">Rp0</div>
+        <button class="btn" onclick="startGendongOrder()">PESAN JOKI GENDONG</button>
+      </div>
+      </section>
+      
+    <section id="page-prices" class="page hidden">
+      <h1>Daftar Harga</h1>
+      <div class="panel"><h2>Joki Rank</h2><div id="rankPriceGrid2" class="rankgrid"></div></div>
+      <div class="panel"><h2>Joki Gendong</h2><div id="gendongPriceGrid2" class="rankgrid"></div></div>
+    </section>
 
-      <button type="button" data-open="rank">
-        <span>♛</span>
-        <small>Joki Rank</small>
-      </button>
-
-      <button type="button" data-open="home"
-        class="nav-logo" aria-label="Beranda Lixera">
-        LX
-      </button>
-
-      <button type="button" data-open="gendong">
-        <span>⚔</span>
-        <small>Gendong</small>
-      </button>
-
-      <button type="button" data-open="pemesanan">
-        <span>▤</span>
-        <small>Pemesanan</small>
-      </button>
-    </nav>
-
+    <section id="page-order" class="page hidden">
+      <h1>Form Pemesanan</h1>
+      <p class="muted">Lengkapi data sesuai layanan yang kamu pilih.</p>
+      <div class="panel">
+        <form id="orderForm">
+          <label>Jenis layanan</label>
+          <select id="orderType" required>
+            <option value="Joki Rank">Joki Rank</option>
+            <option value="Joki Gendong">Joki Gendong</option>
+          </select>
+          <label>Nama pemesan</label>
+          <input id="customerName" required maxlength="60" placeholder="Nama kamu">
+          <label>Nomor WhatsApp kamu</label>
+          <input id="customerWa" required type="tel" maxlength="20" placeholder="08xxxxxxxxxx">
+          <div id="rankFields">
+            <label>Rank awal dan tujuan</label>
+            <input id="orderRankInfo" placeholder="Contoh: GM V bintang 4 ke Mythic 18">
+            <label>Request joki rank</label>
+            <textarea id="rankRequest" placeholder="Request atau informasi tambahan"></textarea>
+          </div>
+          <div id="gendongFields" class="hidden">
+            <label>Nickname ML</label>
+            <input id="mlNick" maxlength="60" placeholder="Nickname Mobile Legends">
+            <label>ID akun ML</label>
+            <input id="mlId" maxlength="40" placeholder="ID pemain">
+            <label>Catatan / request</label>
+            <textarea id="gendongNote" placeholder="Jadwal atau request lainnya"></textarea>
+          </div>
+          <label>Rincian pesanan</label>
+          <textarea id="orderDetails" readonly></textarea>
+          <p class="muted">Total harga</p>
+          <div class="total" id="formTotal">Rp0</div>
+          <button class="btn" type="submit">LANJUT KE PEMBAYARAN</button>
+        </form>
+      </div>
+    </section>
+    <footer>© LIXERA STORE • Harap periksa kembali data pesanan.</footer>
   </main>
 
-  <script src="script.js"></script>
+  <nav class="bottom">
+    <button class="active" data-page="home" onclick="openPage('home')">⌂<br>HOME</button>
+    <button data-page="rank" onclick="openPage('rank')">⚔<br>JOKI RANK</button>
+    <button data-page="gendong" onclick="openPage('gendong')">♛<br>GENDONG</button>
+    <button data-page="order" onclick="openPage('order')">▤<br>PEMESANAN</button>
+  </nav>
+</div>
+
+<div id="paymentModal" class="modal hidden">
+  <div class="modalbox center">
+    <h2>Konfirmasi Pembayaran</h2>
+    <p class="muted">Periksa nominal dan lakukan pembayaran manual melalui QRIS.</p>
+    <div class="total" id="paymentTotal">Rp0</div>
+    <img class="qr" src="qrislixera.png" alt="QRIS LIXERA STORE">
+    <p class="muted">Pastikan nominal yang dibayar sesuai total pesanan. Jangan mengirim bukti pembayaran palsu.</p>
+    <div id="paymentSummary" class="note" style="text-align:left;margin:12px 0"></div>
+    <p id="paymentTimer" class="muted">Tombol konfirmasi tersedia dalam 15 detik.</p>
+    <button id="confirmButton" class="btn" disabled onclick="confirmWhatsApp()">KONFIRMASI VIA WHATSAPP</button>
+    <button class="btn secondary" style="margin-top:9px" onclick="closePayment()">KEMBALI</button>
+  </div>
+</div>
+
+<script>
+"use strict";
+const ADMIN_WA = "628818238236";
+
+const rankData = [
+ {id:"gm",name:"Grandmaster",file:"grandmaster.png",price:4000},
+ {id:"epic",name:"Epic",file:"epic.png",price:6000},
+ {id:"legend",name:"Legend",file:"legend.png",price:8000},
+ {id:"mythic",name:"Mythic",file:"mythic.png",price:18000},
+ {id:"honor",name:"Honor",file:"honor.png",price:25000},
+ {id:"glory",name:"Glory",file:"glory.png",price:30000},
+ {id:"immortal",name:"Immortal",file:"immortal.png",price:34000},
+ {id:"grading",name:"Mythic Grading",file:"mythic.png",price:235000}
+];
+const gendongData = [
+ {id:"gm",name:"Grandmaster",file:"grandmaster.png",price:3000},
+ {id:"epic",name:"Epic",file:"epic.png",price:5000},
+ {id:"legend",name:"Legend",file:"legend.png",price:7000},
+ {id:"mythic",name:"Mythic",file:"mythic.png",price:15000},
+ {id:"honor",name:"Honor",file:"honor.png",price:22000},
+ {id:"glory",name:"Glory",file:"glory.png",price:28000},
+ {id:"immortal",name:"Immortal",file:"immortal.png",price:32000},
+ {id:"grading",name:"Mythic Grading",file:"mythic.png",price:200000}
+];
+const $ = id => document.getElementById(id);
+const money = n => "Rp" + Math.round(n).toLocaleString("id-ID");
+let bannerIndex = 0;
+let currentOrder = null;
+let timerId = null;
+let countdown = 15;
+let estimatedRank = {total:0,valid:false,info:""};
+
+function enterSite(){
+ $("intro").classList.add("hidden");
+ $("app").classList.remove("hidden");
+ openPage("home");
+}
+function openPage(name){
+ document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));
+ const page=$("page-"+name);
+ if(page) page.classList.remove("hidden");
+ document.querySelectorAll(".bottom button").forEach(b=>{
+  b.classList.toggle("active",b.dataset.page===name);
+ });
+ window.scrollTo({top:0,behavior:"smooth"});
+ if(name==="order") syncOrderForm();
+}
+function showBanner(index){
+ bannerIndex=index;
+ $("homeBanner").src="bannerhalaman"+(index+1)+".png";
+ document.querySelectorAll(".dot").forEach((d,i)=>d.classList.toggle("active",i===index));
+}
+setInterval(()=>{if(!$("app").classList.contains("hidden"))showBanner((bannerIndex+1)%3)},4500);
+
+function renderPriceGrid(container,data){
+ $(container).innerHTML=data.map(r=>`
+  <div class="rankcard">
+   <img src="${r.file}" alt="${r.name}" loading="lazy">
+   <strong>${r.name}</strong>
+   <small>${money(r.price)}${r.id==="grading"?" / paket":" / bintang"}</small>
+  </div>`).join("");
+}
+renderPriceGrid("rankPriceGrid",rankData);
+renderPriceGrid("rankPriceGrid2",rankData);
+renderPriceGrid("gendongPriceGrid",gendongData);
+renderPriceGrid("gendongPriceGrid2",gendongData);
+
+const rankOptions=[
+ {id:"gm",name:"Grandmaster",max:24,base:0},
+ {id:"epic",name:"Epic",max:24,base:25},
+ {id:"legend",name:"Legend",max:24,base:50},
+ {id:"mythic",name:"Mythic",max:24,base:75},
+ {id:"honor",name:"Honor",min:25,max:49,base:100},
+ {id:"glory",name:"Glory",min:50,max:99,base:125},
+ {id:"immortal",name:"Immortal",min:100,max:10000,base:175}
+];
+function buildRankOptions(){
+ ["rankFrom","rankTo"].forEach(id=>{
+  $(id).innerHTML=rankOptions.map(r=>`<option value="${r.id}">${r.name}</option>`).join("");
+ });
+ $("rankFrom").value="gm";
+ $("rankTo").value="mythic";
+}
+buildRankOptions();
+
+function getRankPosition(id,star){
+ const r=rankOptions.find(x=>x.id===id);
+ if(!r || !Number.isFinite(star))return null;
+ const min=r.min??0;
+ if(star<min||star>r.max)return null;
+ if(id==="immortal")return r.base+(star-100);
+ return r.base+(star-min);
+}
+function rankPriceForPosition(pos){
+ if(pos<25)return 4000;
+ if(pos<50)return 6000;
+ if(pos<75)return 8000;
+ if(pos<100)return 18000;
+ if(pos<125)return 25000;
+ if(pos<175)return 30000;
+ return 34000;
+}
+function calculateRank(){
+ const from=$("rankFrom").value,to=$("rankTo").value;
+ const a=Number($("starFrom").value),b=Number($("starTo").value);
+ const start=getRankPosition(from,a),end=getRankPosition(to,b);
+ if(start===null||end===null||end<=start){
+  estimatedRank={total:0,valid:false,info:"Rank tujuan harus lebih tinggi daripada rank awal. Periksa nilai bintang/rating."};
+  $("rankTotal").textContent=money(0);
+  $("rankBreakdown").textContent=estimatedRank.info;
+  syncOrderForm();
+  return;
+ }
+ let total=0,counts={};
+ for(let pos=start;pos<end;pos++){
+  const price=rankPriceForPosition(pos);
+  total+=price;
+  counts[price]=(counts[price]||0)+1;
+ }
+ const detail=Object.entries(counts).map(([p,n])=>`${n} kenaikan × ${money(Number(p))}`).join(" + ");
+ const fromName=rankOptions.find(x=>x.id===from).name;
+ const toName=rankOptions.find(x=>x.id===to).name;
+ estimatedRank={total,valid:true,info:`${fromName} ${a} → ${toName} ${b}`,detail};
+ $("rankTotal").textContent=money(total);
+ $("rankBreakdown").textContent=`${end-start} kenaikan: ${detail}. Total ${money(total)}.`;
+ syncOrderForm();
+}
+$("rankFrom").addEventListener("change",calculateRank);
+$("rankTo").addEventListener("change",calculateRank);
+calculateRank();
+
+function updateGendongTotal(){
+ const item=gendongData.find(r=>r.id===$("gendongPackage").value)||gendongData[0];
+ let qty=Math.floor(Number($("gendongQty").value)||1);
+ qty=Math.max(1,Math.min(10,qty));
+ $("gendongQty").value=qty;
+ $("gendongTotal").textContent=money(item.price*qty);
+ syncOrderForm();
+}
+$("gendongPackage").innerHTML=gendongData.map(r=>
+ `<option value="${r.id}">${r.name} — ${money(r.price)}</option>`).join("");
+$("gendongPackage").value="gm";
+updateGendongTotal();
+
+function syncOrderForm(){
+ const type=$("orderType").value;
+ const isRank=type==="Joki Rank";
+ $("rankFields").classList.toggle("hidden",!isRank);
+ $("gendongFields").classList.toggle("hidden",isRank);
+ let total=isRank?estimatedRank.total:gendongTotal();
+ $("formTotal").textContent=money(total);
+ $("orderDetails").value=isRank
+  ?(estimatedRank.valid?estimatedRank.info+" | "+estimatedRank.detail:"Pilih rank awal dan tujuan yang valid.")
+  :getGendongDescription();
+}
+function gendongTotal(){
+ const item=gendongData.find(r=>r.id===$("gendongPackage").value)||gendongData[0];
+ return item.price*Math.max(1,Math.min(10,Math.floor(Number($("gendongQty").value)||1)));
+}
+function getGendongDescription(){
+ const item=gendongData.find(r=>r.id===$("gendongPackage").value)||gendongData[0];
+ return `${item.name} × ${$("gendongQty").value} — ${money(gendongTotal())}`;
+}
+$("orderType").addEventListener("change",syncOrderForm);
+
+function startRankOrder(){
+ if(!estimatedRank.valid){alert("Rank tujuan harus lebih tinggi dari rank awal. Periksa kembali.");return;}
+ $("orderType").value="Joki Rank";
+ $("orderRankInfo").value=estimatedRank.info;
+ syncOrderForm();
+ openPage("order");
+}
+function startGendongOrder(){
+ $("orderType").value="Joki Gendong";
+ syncOrderForm();
+ openPage("order");
+}
+
+$("orderForm").addEventListener("submit",function(e){
+ e.preventDefault();
+ const type=$("orderType").value;
+ const name=$("customerName").value.trim();
+ const wa=$("customerWa").value.trim();
+ if(!name||!wa){alert("Nama dan nomor WhatsApp wajib diisi.");return;}
+ if(!/^[0-9+\s()-]{8,20}$/.test(wa)){alert("Periksa format nomor WhatsApp kamu.");return;}
+ let details,total;
+ if(type==="Joki Rank"){
+  if(!estimatedRank.valid){alert("Pilih rank awal dan tujuan yang valid.");return;}
+  details=estimatedRank.info+"; "+estimatedRank.detail;
+  total=estimatedRank.total;
+ }else{
+  if(!$("mlNick").value.trim()||!$("mlId").value.trim()){
+   alert("Nickname ML dan ID akun wajib diisi.");return;
+  }
+  details=getGendongDescription();
+  total=gendongTotal();
+ }
+ currentOrder={
+  type,name,wa,details,total,
+  rankRequest:$("rankRequest").value.trim(),
+  mlNick:$("mlNick").value.trim(),
+  mlId:$("mlId").value.trim(),
+  note:$("gendongNote").value.trim()
+ };
+ $("paymentTotal").textContent=money(total);
+ $("paymentSummary").textContent=
+  `Layanan: ${type}\nNama: ${name}\nDetail: ${details}`;
+ $("paymentModal").classList.remove("hidden");
+ countdown=15;
+ $("confirmButton").disabled=true;
+ $("paymentTimer").textContent=`Tombol konfirmasi tersedia dalam ${countdown} detik.`;
+ clearInterval(timerId);
+ timerId=setInterval(()=>{
+  countdown--;
+  if(countdown<=0){
+   clearInterval(timerId);
+   $("confirmButton").disabled=false;
+   $("paymentTimer").textContent="Silakan konfirmasi setelah kamu menyelesaikan pembayaran.";
+  }else{
+   $("paymentTimer").textContent=`Tombol konfirmasi tersedia dalam ${countdown} detik.`;
+  }
+ },1000);
+});
+function closePayment(){
+ clearInterval(timerId);
+ $("paymentModal").classList.add("hidden");
+}
+function confirmWhatsApp(){
+ if(!currentOrder)return;
+ const o=currentOrder;
+ const msg=[
+  "Halo min, saya sudah melakukan pemesanan di LIXERA STORE.",
+  "",
+  "Nama: "+o.name,
+  "WhatsApp: "+o.wa,
+  "Layanan: "+o.type,
+  "Detail: "+o.details,
+  "Total: "+money(o.total),
+  o.type==="Joki Rank"?"Request: "+(o.rankRequest||"-"):"",
+  o.type==="Joki Gendong"?"Nickname ML: "+o.mlNick:"",
+  o.type==="Joki Gendong"?"ID ML: "+o.mlId:"",
+  o.type==="Joki Gendong"?"Catatan: "+(o.note||"-"):"",
+  "",
+  "Mohon konfirmasi pesanan saya. Saya akan mengirim bukti pembayaran untuk diperiksa admin."
+ ].filter(Boolean).join("\n");
+ window.open("https://wa.me/"+ADMIN_WA+"?text="+encodeURIComponent(msg),"_blank");
+}
+</script>
 </body>
-                                         </html>
-          
+</html>
